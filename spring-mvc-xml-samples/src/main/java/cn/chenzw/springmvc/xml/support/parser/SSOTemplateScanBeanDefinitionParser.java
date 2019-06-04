@@ -1,30 +1,37 @@
 package cn.chenzw.springmvc.xml.support.parser;
 
+import cn.chenzw.springmvc.xml.support.SSO;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.config.BeanDefinitionHolder;
-import org.springframework.beans.factory.support.BeanDefinitionBuilder;
-import org.springframework.beans.factory.xml.AbstractSingleBeanDefinitionParser;
 import org.springframework.beans.factory.xml.BeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
+import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
+import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.util.StringUtils;
 import org.w3c.dom.Element;
 
-import java.util.Arrays;
+
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class SSOTemplateScanBeanDefinitionParser implements BeanDefinitionParser {
-    @Override
-    public BeanDefinition parse(Element element, ParserContext parserContext) {
 
+    public BeanDefinition parse(Element element, ParserContext parserContext) {
         String basePackage = element.getAttribute("base-package");
         basePackage = parserContext.getReaderContext().getEnvironment().resolvePlaceholders(basePackage);
 
         String[] basePackages = StringUtils.tokenizeToStringArray(basePackage, ",; \t\n");
 
+        ClassPathScanningCandidateComponentProvider scanner = new ClassPathScanningCandidateComponentProvider(false);
+        scanner.addIncludeFilter(new AnnotationTypeFilter(SSO.class));
+        Set<BeanDefinition> beans = new LinkedHashSet<BeanDefinition>();
+        for (String _basePackage : basePackages) {
+            beans.addAll(scanner.findCandidateComponents(_basePackage));
+        }
 
-        /*ClassPathBeanDefinitionScanner scanner = this.configureScanner(parserContext, element);
-        Set<BeanDefinitionHolder> beanDefinitions = scanner.doScan(basePackages);
-        this.registerComponents(parserContext.getReaderContext(), beanDefinitions, element);*/
+        for (BeanDefinition bean : beans) {
+            parserContext.getReaderContext().getRegistry().registerBeanDefinition(bean.getBeanClassName(), bean);
+        }
+
         return null;
     }
 
