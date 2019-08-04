@@ -44,7 +44,6 @@ public class AppConfig {
 
         View viewName = internalResourceViewResolver.resolveViewName("test", null);
         InternalResourceView view2 = (InternalResourceView) viewName;
-        System.out.println(view2.getUrl());
 		
 		
 		
