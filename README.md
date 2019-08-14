@@ -10,4 +10,4 @@
 - [spring-mvc-annotation-initializer](spring-mvc-annotation-samples/spring-mvc-annotation-initializer-samples)：回调函数示例
 - [spring-mvc-arguments-samples](spring-mvc-annotation-samples/spring-mvc-arguments-samples): 支持的参数类型示例
 - [spring-mvc-context-samples](spring-mvc-annotation-samples/spring-mvc-context-samples): 父子容器示例
-
+- [spring-interceptor-samples](spring-mvc-annotation-samples/spring-mvc-interceptor-samples): 拦截器示例
