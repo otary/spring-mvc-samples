@@ -2,6 +2,7 @@ package cn.chenzw.spring.mvc.filter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -19,7 +20,7 @@ public class SamplesFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        logger.info("- doFilterInternal");
+        logger.info("- OncePerRequestFilter doFilterInternal");
 
         filterChain.doFilter(request, response);
     }

@@ -16,6 +16,7 @@
         <module>spring-mvc-arguments-samples</module>
         <module>spring-mvc-context-samples</module>
         <module>spring-mvc-interceptor-samples</module>
+        <module>spring-mvc-datasource-samples</module>
     </modules>
 
 </project>

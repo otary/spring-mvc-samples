@@ -12,7 +12,7 @@ public class Samples2Filter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        logger.info("- doFilter");
+        logger.info("- Filter doFilter");
 
         filterChain.doFilter(servletRequest, servletResponse);
     }
