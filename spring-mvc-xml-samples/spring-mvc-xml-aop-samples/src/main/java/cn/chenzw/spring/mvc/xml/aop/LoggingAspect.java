@@ -17,7 +17,6 @@ import java.util.Arrays;
 public class LoggingAspect {
 
     private ThreadLocal<JoinPointWrapper> joinPointWrapperTL = new ThreadLocal<>();
-    private static final Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 
     private static final String POINT_CUT = "log()";
 
@@ -32,17 +31,17 @@ public class LoggingAspect {
         JoinPointWrapper joinPointWrapper = new JoinPointWrapper(joinPoint);
         joinPointWrapperTL.set(joinPointWrapper);
 
-        logger.info("methodName:" + joinPointWrapper.getMethodName());
-        logger.info("articleId:" + joinPointWrapper.getArtifactId());
-        logger.info("bodyString:" + joinPointWrapper.getBodyString());
-        logger.info("canonicalClassMethod:" + joinPointWrapper.getCanonicalClassMethod());
-        logger.info("clientIp:" + joinPointWrapper.getClientIp());
-        logger.info("httpMethod:" + joinPointWrapper.getHttpMethod());
-        logger.info("queryString:" + joinPointWrapper.getQueryString());
-        logger.info("threadName:" + joinPointWrapper.getThreadName());
-        logger.info("uri:" + joinPointWrapper.getURI());
-        logger.info("methodArgs:" + Arrays.toString(joinPointWrapper.getMethodArgs()));
-        logger.info("threadId:" + joinPointWrapper.getThreadId());
+        System.out.println("methodName:" + joinPointWrapper.getMethodName());
+        System.out.println("articleId:" + joinPointWrapper.getArtifactId());
+        System.out.println("bodyString:" + joinPointWrapper.getBodyString());
+        System.out.println("canonicalClassMethod:" + joinPointWrapper.getCanonicalClassMethod());
+        System.out.println("clientIp:" + joinPointWrapper.getClientIp());
+        System.out.println("httpMethod:" + joinPointWrapper.getHttpMethod());
+        System.out.println("queryString:" + joinPointWrapper.getQueryString());
+        System.out.println("threadName:" + joinPointWrapper.getThreadName());
+        System.out.println("uri:" + joinPointWrapper.getURI());
+        System.out.println("methodArgs:" + Arrays.toString(joinPointWrapper.getMethodArgs()));
+        System.out.println("threadId:" + joinPointWrapper.getThreadId());
 
     }
 

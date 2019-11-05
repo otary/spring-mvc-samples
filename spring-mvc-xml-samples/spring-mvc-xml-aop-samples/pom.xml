@@ -9,6 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-xml-aop-samples</artifactId>
+    <packaging>war</packaging>
+
     <dependencies>
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -20,7 +22,18 @@
             <groupId>cn.chenzw.toolkit</groupId>
             <artifactId>toolkit</artifactId>
             <version>RELEASE</version>
-            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.9.9</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.9</version>
         </dependency>
     </dependencies>
 
