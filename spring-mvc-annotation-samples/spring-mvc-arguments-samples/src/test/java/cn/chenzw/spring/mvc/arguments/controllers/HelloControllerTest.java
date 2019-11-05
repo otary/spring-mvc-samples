@@ -20,7 +20,6 @@ import javax.servlet.http.Cookie;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -52,7 +51,7 @@ public class HelloControllerTest {
     @Test
     public void testWithHeader() throws Exception {
         MvcResult mvcResult = this.mockMvc.perform(get("/rest/hello/header")
-                .header("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3")
+                .header("accept", "text/html,application/xhtml+cn.chenzw.spring.mvc.xml,application/cn.chenzw.spring.mvc.xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3")
                 .header("host", "localhost:8080")
                 .header("connection", "keep-alive")
                 .header("cache-control", "max-age=0")
@@ -61,7 +60,7 @@ public class HelloControllerTest {
 
         String content = mvcResult.getResponse().getContentAsString();
 
-        Assert.assertEquals("Obtained 'Accept' header 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3', 'use-agent' header 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36'", content);
+        Assert.assertEquals("Obtained 'Accept' header 'text/html,application/xhtml+cn.chenzw.spring.mvc.xml,application/cn.chenzw.spring.mvc.xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3', 'use-agent' header 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36'", content);
     }
 
 
@@ -99,10 +98,10 @@ public class HelloControllerTest {
 
     @Test
     public void testWithMatrixVariable() throws Exception {
-        MvcResult mvcResult = this.mockMvc.perform(get("/rest/hello/matrixvars;jsessionid=node01uy3s2v42dep/simple"))
+       /* MvcResult mvcResult = this.mockMvc.perform(get("/rest/hello/matrixvars;jsessionid=node01uy3s2v42dep/simple"))
                 .andExpect(status().isOk()).andReturn();
 
-        String content = mvcResult.getResponse().getContentAsString();
+        String content = mvcResult.getResponse().getContentAsString();*/
 
     }
 
